@@ -22,6 +22,7 @@ public class UserController {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("user", new User());
+        model.addAttribute("users", userService.getAll());
         return "create-user";
     }
 
@@ -29,10 +30,11 @@ public class UserController {
     public String create(@Valid @ModelAttribute User user, Errors errors, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("user", user);
-            return "create-user";
+            model.addAttribute("users", userService.getAll());
+            return "redirect:/users/create";
         }
         userService.create(user);
-        return "create-user";
+        return "redirect:/users/create";
     }
 
     //    @GetMapping("/{id}/read")
@@ -51,7 +53,7 @@ public class UserController {
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable("id") int id) {
         userService.delete(id);
-        return "redirect:/home";
+        return "redirect:/users/create";
     }
 
 
