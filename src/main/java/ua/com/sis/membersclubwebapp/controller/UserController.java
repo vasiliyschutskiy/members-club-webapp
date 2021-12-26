@@ -11,7 +11,7 @@ import ua.com.sis.membersclubwebapp.service.UserService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping({"/", "home","/users"})
 public class UserController {
     @Autowired
     private UserService userService;
@@ -19,7 +19,7 @@ public class UserController {
 
 
 
-    @GetMapping("/create")
+    @GetMapping({"/", "home","/create"})
     public String create(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("users", userService.getAll());
