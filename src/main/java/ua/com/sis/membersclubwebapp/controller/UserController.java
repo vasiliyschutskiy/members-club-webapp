@@ -10,8 +10,9 @@ import ua.com.sis.membersclubwebapp.service.UserService;
 
 import javax.validation.Valid;
 
+
 @Controller
-@RequestMapping({"/", "home","/users"})
+@RequestMapping({"/", "/users"})
 public class UserController {
     @Autowired
     private UserService userService;
@@ -19,7 +20,7 @@ public class UserController {
 
 
 
-    @GetMapping({"/", "home","/create"})
+    @GetMapping({"/","/create"})
     public String create(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("users", userService.getAll());
@@ -31,39 +32,17 @@ public class UserController {
         if(errors.hasErrors()) {
             model.addAttribute("user", user);
             model.addAttribute("users", userService.getAll());
-            return "redirect:/users/create";
+            return "create-user";
         }
+        user.setCreatedAt();
         userService.create(user);
         return "redirect:/users/create";
     }
 
-    //    @GetMapping("/{id}/read")
-//    public String read(//add needed parameters) {
-//        //ToDo
-//        return " ";
-//    }
-////
-//    @GetMapping("/{id}/update")
-//    public String update(//add needed parameters) {
-//        //ToDo
-//        return " ";
-//    }
-//
-//
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable("id") int id) {
         userService.delete(id);
         return "redirect:/users/create";
     }
-
-
-
-
-//    @GetMapping("/all")
-//    public String getAll(@PathVariable("user_id") int user_id, Model model) {
-//        model.addAttribute("user", userService.readById(user_id));
-//
-//        return "todos_user";
-//    }
 }
 

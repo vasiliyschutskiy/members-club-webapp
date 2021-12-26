@@ -22,18 +22,6 @@ public class UserServiceimpl implements UserService {
         return userRepository.save(user);
     }
 
-//    @Override
-//    public User readById(long id) {
-//        Optional<User> optional = userRepository.findById(id);
-//        return optional.get();
-//    }
-
-//    @Override
-//    public User update(User user) {
-//        User oldUser = readById(user.getId());
-//        return userRepository.save(user);
-//    }
-
     @Override
     public void delete(long id) {
         User user = userRepository.findById(id).get();
