@@ -28,11 +28,11 @@ public class User  {
 
     //    @Pattern(regexp = "(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}",
 //            message = "Must be minimum 6 characters, at least one letter and one number")
-    @Column(name = "password", nullable = false)
-    private String password;
+//    @Column(name = "password", nullable = false)
+//    private String password;
 
-//    @Column(name = "createdAt", nullable = false)
-//    private LocalDateTime createdAt;
+    @Column(name = "createdAt", nullable = false)
+    private LocalDateTime createdAt;
 
     public User() {
     }
@@ -69,19 +69,19 @@ public class User  {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-//    public LocalDateTime getCreatedAt() {return createdAt;}
-//
-//    public void setCreatedAt() {
-//        this.createdAt = LocalDateTime.now();
+//    public String getPassword() {
+//        return password;
 //    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
+
+    public LocalDateTime getCreatedAt() {return createdAt;}
+
+    public void setCreatedAt() {
+        this.createdAt = LocalDateTime.now();
+    }
 
 
     public String getUsername() {
@@ -95,8 +95,8 @@ public class User  {
                 ", firstName = '" + firstName + '\'' +
                 ", lastName = '" + lastName + '\'' +
                 ", email = '" + email + '\'' +
-                ", password = '" + password + '\'' +
-//                ", createdAt = " + createdAt +
+//                ", password = '" + password + '\'' +
+                ", createdAt = " + createdAt +
                 "} ";
     }
 }

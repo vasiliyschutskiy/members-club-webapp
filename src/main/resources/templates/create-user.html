@@ -37,20 +37,21 @@
         <div class="alert alert-warning mb-4" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
         </div>
 
-        <div class="row mb-3">
-            <label for="password" class="col-sm-l col-form-label">Password:</label>
-            <div class="col-sm-ll">
-                <input type="password" class="form-control" th:field="*{password}" id="password" aria-describedby="Password"> </div>
-            <div class ="row">
-                <div class ="col-sm-1"></div>
-                <div class ="col-sm-11">
-                    <div class="alert alert-warning mb-4" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
-                    </div>
-                    <button type="submit" class="btn btn-info" style = "color:white">Add</button>
-                    <button type="reset" class="btn btn-secondary">Clear</button>
-                </div>
-            </div>
-        </div>
+<!--        <div class="row mb-3">-->
+<!--            <label for="password" class="col-sm-l col-form-label">Password:</label>-->
+<!--            <div class="col-sm-ll">-->
+<!--                <input type="password" class="form-control" th:field="*{password}" id="password" aria-describedby="Password"> </div>-->
+<!--            <div class ="row">-->
+<!--                <div class ="col-sm-1"></div>-->
+<!--                <div class ="col-sm-11">-->
+<!--                    <div class="alert alert-warning mb-4" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <button type="submit" class="btn btn-info" style = "color:white">Add</button>
+        <button type="reset" class="btn btn-secondary">Clear</button>
     </form>
 
     <h3> Members </h3>
@@ -62,6 +63,7 @@
             <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">EMAIL</th>
+            <th scope="col">Date</th>
             <th scope="col" colspan="2">Operations</th>
         </tr>
         </thead>
@@ -73,6 +75,7 @@
                 <a th:text="${user.firstName} + ' ' + ${user.lastName}"></a>
             </td>
             <td th:text="${user.email}" />
+            <td th:text="${user.createdAt}" />
             <td>
                 <a th:href="@{/users/{id}/delete(id=${user.id})}">Delete</a>
             </td>
