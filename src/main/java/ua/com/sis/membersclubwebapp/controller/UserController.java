@@ -29,11 +29,15 @@ public class UserController {
 
     @PostMapping("/create")
     public String create(@Valid @ModelAttribute User user, Errors errors, Model model) {
+        if (userService.getAll().stream().anyMatch(u->u.getEmail().equals(user.getEmail()))){
+            errors.rejectValue("email", "error.Message.Key", "This email already exists!");
+        }
         if(errors.hasErrors()) {
             model.addAttribute("user", user);
             model.addAttribute("users", userService.getAll());
             return "create-user";
         }
+
         user.setCreatedAt();
         userService.create(user);
         return "redirect:/users/create";

@@ -1,6 +1,7 @@
 package ua.com.sis.membersclubwebapp.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 import ua.com.sis.membersclubwebapp.model.User;
 import ua.com.sis.membersclubwebapp.repository.UserRepository;
 import ua.com.sis.membersclubwebapp.service.UserService;
@@ -19,7 +20,7 @@ public class UserServiceimpl implements UserService {
 
     @Override
     public User create(User user) {
-        return userRepository.save(user);
+           return userRepository.save(user);
     }
 
     @Override
