@@ -1,6 +1,7 @@
 package ua.com.sis.membersclubwebapp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -9,7 +10,8 @@ import java.time.format.DateTimeFormatter;
 @Table(name = "users")
 public class User  {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id", nullable = false, unique = true)
     private long id;
 
     @Pattern(regexp = "(?i)[a-z]+([.\\s]+[a-z]+)*",
@@ -31,9 +33,9 @@ public class User  {
         return id;
     }
 
-//    public void setId(long id) {
-//        this.id = id;
-//    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
